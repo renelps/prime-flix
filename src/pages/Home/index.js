@@ -6,6 +6,7 @@ import styled from "styled-components";
 // #000000
 export function Home() {
   const [filmes, setFilmes] = useState([]);
+  const [loanding, setLoading] = useState(true);
 
   const Container = styled.div`
     display: flex;
@@ -59,7 +60,15 @@ export function Home() {
 
     }
   `
-
+  const Loading = styled.div`
+    margin-top: 20px;
+    h2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+  `
   useEffect(() => {
     
     async function loadFilmes() {
@@ -73,12 +82,22 @@ export function Home() {
 
       //console.log(response.data.results.slice(0, 10))
       setFilmes(response.data.results.slice(0, 20));
+      setLoading(false)
 
     
     }
 
     loadFilmes()
   }, [])
+
+
+  if(loanding) {
+    return (
+      <Loading>
+        <h2 style={{ color: "white"}}>Carregando Filmes...</h2>
+      </Loading>
+    )
+  }
 
   return (
     <Container>

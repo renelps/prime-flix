@@ -37,7 +37,7 @@ export function Header() {
   return (
     <Header>
       <Link to="/" className="logo">Prime Flix</Link>
-      <Link to="/favoritos" className="favoritos">Favoritos</Link>
+      <Link to="/favorites" className="favoritos">Favoritos</Link>
     </Header>
   )
 }
