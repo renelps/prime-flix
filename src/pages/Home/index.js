@@ -2,16 +2,19 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import api from "../../services/api";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 // #E50914
 // #000000
 export function Home() {
   const [filmes, setFilmes] = useState([]);
   const [loanding, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const Container = styled.div`
     display: flex;
     align-items: center; 
     justify-content: center;
+    width: 100%;
     max-width: 1200px;
   `;
 
@@ -26,12 +29,11 @@ export function Home() {
       box-shadow: 0px 1px 8px #fff;
       display: flex;
       flex-direction: column;
-      border-radius: 2px;
-      min-height: 500px;
+      border-radius: 5px;
+      min-height: 400px;
       padding: 10px;
       text-align: center;
-      flex-direction: column;
-      width: 300px;
+      width: 200px;
       margin: 10px;
       cursor: pointer;
 
@@ -40,24 +42,77 @@ export function Home() {
         align-items: center;
         justify-content: center;
         width: 100%;
+        padding-top: 20px;
         text-align: center;
         min-height: 50px;
         color: #fff;
-        font-size: 1.2em;
+        font-size: 90%;
       }
 
       img {
-        border-radius: 2px;
-        height: 440px;
+        border-radius: 5px;
+        height: 270px;
         
       }
 
       a {
         text-decoration: none;
         color: #fff;
+        font-size: 80%;
         padding: 10px 0;
+        
       }
 
+    }
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 3px;
+      li {
+        list-style: none;
+        box-shadow: 0px 1px 8px #fff;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 5px;
+        padding: 7px;
+        min-height: auto;
+        height: auto;
+        max-width: 150px;
+        margin: 7px;
+        cursor: pointer;
+
+        h2 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          text-align: center;
+          padding: 5px 0;
+          color: #fff;
+          font-size: 70%;
+        }
+
+        img {
+          border-radius: 2px;
+          max-width: 100%;
+          height: auto;
+          max-height: 204px;
+          
+        }
+
+        a {
+          text-decoration: none;
+          font-size: 70%;
+          color: #fff;
+        }
+
+    }
     }
   `
   const Loading = styled.div`
@@ -90,7 +145,6 @@ export function Home() {
     loadFilmes()
   }, [])
 
-
   if(loanding) {
     return (
       <Loading>
@@ -104,7 +158,7 @@ export function Home() {
       <div>
         <ContainerList>
           {filmes.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} onClick={() => navigate(`/filme/${item.id}`)}>
               <img src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt={item.title} />
               <h2>{item.title}</h2>
               <Link to={`/filme/${item.id}`}>Acessar</Link>

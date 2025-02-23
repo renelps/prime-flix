@@ -1,0 +1,47 @@
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 10px;
+      li {
+        list-style: none;
+        box-shadow: 0px 1px 8px #fff;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px;
+        height: auto;
+        max-width: 150px;
+        margin: 10px;
+        cursor: pointer;
+
+        h2 {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          text-align: center;
+          padding: 10px 0;
+          color: #fff;
+          font-size: 70%;
+        }
+
+        img {
+          border-radius: 2px;
+          max-width: 100%;
+          height: auto;
+          max-height: 220px; /* Reduzindo a altura */
+          
+        }
+
+        a {
+          text-decoration: none;
+          color: #fff;
+        }
+
+    }
+    }

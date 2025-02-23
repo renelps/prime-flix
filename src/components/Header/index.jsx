@@ -31,6 +31,18 @@ export function Header() {
       border-radius: 4px;
       cursor: pointer;
     }
+
+    @media (max-width: ${({theme}) => theme.breakpoints.mobile}) {
+      .logo {
+       text-decoration: none;
+       font-size: 25px;
+       list-style: none;
+       color: #E50914;
+       cursor: pointer;
+       font-weight: bold;
+       padding: 0 3px;
+    }
+    }
   `;
 
 
