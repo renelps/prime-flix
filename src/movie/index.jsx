@@ -75,6 +75,7 @@ export function Filme(){
       max-width: 600px;
       img {
         width: 100%;
+        border-radius: 5px; 
         margin: auto;
       }
     }
@@ -109,12 +110,6 @@ export function Filme(){
           color: white;
           outline: none;
 
-          a {
-            text-decoration: none;
-            color: #fff;
-          }
-
-
         }
         .secundaryButton {
           display: flex;
@@ -134,6 +129,7 @@ export function Filme(){
         
         .secundaryButton:hover {
           background: #ac1309;
+          border: 5px;
           color: #fff;
         }
       }
